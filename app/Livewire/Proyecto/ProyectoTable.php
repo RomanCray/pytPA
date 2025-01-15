@@ -6,6 +6,8 @@ use Livewire\Attributes\On;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 use App\Models\Proyecto as ProyectoModel;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Auth;
 use Rappasoft\LaravelLivewireTables\Views\Columns\BooleanColumn;
 
 class ProyectoTable extends DataTableComponent
@@ -30,8 +32,20 @@ class ProyectoTable extends DataTableComponent
                 ->sortable(),
             Column::make("Nombre proyecto", "nombre_proyecto")
                 ->sortable()->searchable(),
-            Column::make("Descripción Final", "titulo_proyecto")
-                ->sortable()->searchable(),
+            Column::make("Titulo Doc.", "titulo_proyecto")
+                ->sortable()
+                ->searchable()
+                ->format(function ($value) {
+                    return $value ? $value : '<span class="text-danger">Sin Titulo</span>';
+                })
+                ->html(),
+            Column::make("Descripción Final Doc.", "final_description")
+                ->sortable()
+                ->searchable()
+                ->format(function ($value) {
+                    return $value ? $value : '<span class="text-danger">Sin Descripcion</span>';
+                })
+                ->html(),
             BooleanColumn::make('status')
                 ->setSuccessValue(true)->sortable(),
             Column::make("Acciones")
@@ -40,7 +54,7 @@ class ProyectoTable extends DataTableComponent
                         'color' => '',
                         'size' => '30px',
                         'nombreIcono' => 'apartment',
-                        'nombre' => 'Añadir Edificio',
+                        'nombre' => 'Edificios',
                         'data' => $row,
                         'ruta' => 'crear.edificio',
                     ];
@@ -65,6 +79,11 @@ class ProyectoTable extends DataTableComponent
                     ])->with('wire:key', 'row-' . $row->id);
                 }),
         ];
+    }
+
+    public function builder(): Builder
+    {
+        return ProyectoModel::query()->where('user', Auth::user()->id);
     }
 
     public function redireccionar($id, $ruta)

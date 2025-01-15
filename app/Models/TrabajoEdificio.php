@@ -11,7 +11,7 @@ class TrabajoEdificio extends Model
 
     protected $table = 'trabajo_edificios';
 
-    protected $fillable = ['id_edificio', 'fecha_inicio', 'fecha_fin', 'descripcion', 'material'];
+    protected $fillable = ['id_edificio', 'fecha_inicio', 'fecha_fin', 'descripcion', 'material', 'titulo_trabajo'];
 
     public function edificio()
     {

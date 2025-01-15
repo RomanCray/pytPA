@@ -27,8 +27,7 @@
 </head>
 
 <body>
-
-    {{-- CDN BOOTSTRAP --}}
+    <!-- CDN BOOTSTRAP -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
     </script>
@@ -36,6 +35,7 @@
         integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous">
     </script>
 
+    <!-- CDN SWEETALERT -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     @rappasoftTableStyles
@@ -76,6 +76,21 @@
     </main>
 
     @livewireScripts
+
+    <script>
+        document.addEventListener('livewire:navigate', initializeDropdowns);
+        document.addEventListener('livewire:load', initializeDropdowns);
+        document.addEventListener('livewire:update', initializeDropdowns);
+
+        function initializeDropdowns() {
+            const dropdowns = document.querySelectorAll('.dropdown-toggle');
+            dropdowns.forEach((dropdown) => {
+                new bootstrap.Dropdown(dropdown);
+                console.log('Dropdown inicializado:', dropdown);
+            });
+        }
+    </script>
+
 </body>
 
 </html>

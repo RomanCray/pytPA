@@ -11,14 +11,14 @@
         </div>
     </div>
     <script>
-        const toastTrigger{{ $principalKey }} = document.getElementById('{{ $idButton }}')
-        const toastLiveExample{{ $principalKey }} = document.getElementById('{{ $idToast }}')
+        const toastTrigger{{ $principalKey }}_{{ $idButton }} = document.getElementById('{{ $idButton }}')
+        const toastLiveExample{{ $principalKey }}_{{ $idButton }} = document.getElementById('{{ $idToast }}')
 
-        if (toastTrigger{{ $principalKey }}) {
-            const toastBootstrap{{ $principalKey }} = bootstrap.Toast.getOrCreateInstance(
-                toastLiveExample{{ $principalKey }})
-            toastTrigger{{ $principalKey }}.addEventListener('click', () => {
-                toastBootstrap{{ $principalKey }}.show()
+        if (toastTrigger{{ $principalKey }}_{{ $idButton }}) {
+            const toastBootstrap{{ $principalKey }}_{{ $idButton }} = bootstrap.Toast.getOrCreateInstance(
+                toastLiveExample{{ $principalKey }}_{{ $idButton }})
+                toastTrigger{{ $principalKey }}_{{ $idButton }}.addEventListener('click', () => {
+                toastBootstrap{{ $principalKey }}_{{ $idButton }}.show()
             })
         }
     </script>

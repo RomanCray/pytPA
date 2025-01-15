@@ -23,10 +23,9 @@
     </form>
 
     <script>
-        // Función para inicializar Select2 con opciones personalizadas
         function initializeSelect2() {
             $('.settingEdificioSelect').select2({
-                dropdownParent: $('#createEdificioModal-0'), // Ajusta al modal actual
+                dropdownParent: $('#createEdificioModal-0'), 
                 width: '100%',
                 theme: 'bootstrap4',
             });
@@ -37,12 +36,10 @@
             });
         }
 
-        // Inicializar Select2 al cargar el DOM
         $(document).ready(function() {
             initializeSelect2();
         });
 
-        // Escuchar eventos de Livewire para reinicializar Select2
         document.addEventListener('livewire:load', function() {
             Livewire.hook('message.processed', (message, component) => {
                 initializeSelect2();
@@ -56,16 +53,13 @@
         });
     </script>
 
-    <!-- Estilos personalizados para resolver problemas de z-index -->
     <style>
         .select2-container {
             z-index: 1055 !important;
-            /* Mayor que el modal de Bootstrap (z-index: 1050) */
         }
 
         .select2-container--bootstrap4 .select2-dropdown {
             z-index: 1055 !important;
-            /* Asegurar el menú sobre todos los elementos */
         }
 
         .select2-container--bootstrap4 .select2-selection {

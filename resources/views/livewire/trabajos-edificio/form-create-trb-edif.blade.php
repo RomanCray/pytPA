@@ -1,7 +1,8 @@
 <div>
     <form>
         <div class="row mb-3">
-            <label for="inputEmail3" class="col-sm-2 col-form-label"><b>Fecha Inicio</b></label>
+            <label for="inputEmail3" class="col-sm-2 col-form-label"><b>Fecha Inicio <span
+                        class="text-danger">*</span></b></label>
             <div class="col-sm-10">
                 <input type="date" wire:model="fecha_inicio" class="form-control" name="fecha_inicio">
             </div>
@@ -21,7 +22,7 @@
         </div>
 
         <div class="mb-3">
-            <label for="descripcion" class="form-label">Descripción</label>
+            <label for="descripcion" class="form-label">Descripción<span class="text-danger">*</span></label>
             <div wire:ignore>
                 <textarea id="descripcion{{ $generalName }}" class="form-control">{!! nl2br(e($descripcion)) !!}</textarea>
             </div>

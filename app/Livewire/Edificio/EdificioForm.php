@@ -11,7 +11,7 @@ use Livewire\Component;
 class EdificioForm extends Component
 {
     public $proyect_id;
-    public $nombre_edificio = '';
+    public $nombre_edificio;
     public $accion_edificio;
     public $nombre_modal;
     public $id_edificio;

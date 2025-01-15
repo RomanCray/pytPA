@@ -47,7 +47,7 @@
     </div>
 
     <button type="button" class="btn btn-primary" id="proyectoDeletedToast1" hidden>
-        Show live toast
+        Show live toast este
     </button>
     @livewire(
         'Toast.Toast',
